@@ -1,4 +1,201 @@
-body {
-    background: blue;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@300;400;700&display=swap');
 
+$gray: #303633;
+$lightGray: #f2f2f2;
+$green: #8bebcd;
+$pink: #9c7a97;
+$headings: 'Source Sans Pro',
+sans-serif;
+$text: 'Lato',
+sans-serif;
+$transition: 0.3s ease;
+$white: #fff;
+
+/***********
+mixins
+***********/
+@mixin btn {
+    border: 2px solid $green;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    background: transparent;
+    color: #000;
+    margin-top: 20px;
+
+    &:hover {
+        border: 2px solid $pink;
+        color: $pink;
+        cursor: pointer;
+        transition: $transition;
+    }
+}
+
+@mixin line {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: $lightGray;
+    margin: 25px 0;
+    content: "";
+}
+
+
+
+
+
+/***********
+basic styles
+***********/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $text;
+    font-size: 16px;
+    color: $gray;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $headings;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+
+    &::after {
+        display: block;
+        height: 2px;
+        width: 100px;
+        background: $pink;
+        margin: 25px 0;
+        content: "";
+    }
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/***********
+aside
+***********/
+aside {
+    flex: 1;
+    background-image: linear-gradient(rgba($gray, 0.9), rgba($pink, 0.9)), url(img/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 60px;
+
+    img {
+        width: 40%;
+        border-radius: 50%;
+        border: 5px solid $pink;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: $transition;
+            border: 5px solid $white;
+        }
+    }
+
+    .developer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    h1 {
+        font-weight: 300;
+        color: $white;
+        padding: 30px 0;
+
+        span {
+            color: $green;
+            font-weight: 700;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+    }
+
+    a {
+        color: $green;
+        margin-left: 20px;
+        font-size: 20px;
+
+        &:hover {
+            color: $white;
+            transition: $transition;
+        }
+    }
+}
+
+
+
+
+/***********
+main
+***********/
+.main {
+    flex: 2;
+    padding: 40px;
+    overflow: scroll;
+    height: 100vh;
+
+    .about {
+        button {
+            @include btn();
+        }
+        &::after {
+            @include line();
+        }
+        
+    }
+    .portfolio {
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+            .col {
+                flex: 0 0 48%;
+                img {
+                    width: 100%;
+                    &:hover {
+                        opacity: .6;
+                        transition: $transition;
+                        transform: scale(1.1);
+                    }
+                }
+                h4 {
+                    font-size: 20px;
+                }
+                p {
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        button {
+            @include btn();
+        }
+        &::after {
+            @include line();
+        }
+    }
 }
