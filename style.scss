@@ -82,7 +82,9 @@ h2 {
         content: "";
     }
 }
-
+ul {
+    list-style: none;
+}
 .content {
     display: flex;
     flex-wrap: wrap;
@@ -103,7 +105,13 @@ aside {
     align-items: flex-end;
     text-align: right;
     padding-right: 60px;
-
+    @media(max-width: 768px) {
+        flex: 0 0 100%;
+        align-items: center;
+        padding-right: 0;
+        text-align: center;
+        height: 80vh;
+    }
     img {
         width: 40%;
         border-radius: 50%;
@@ -119,6 +127,9 @@ aside {
     .developer {
         display: flex;
         justify-content: flex-end;
+        @media(max-width: 768px) {
+            justify-content: center;
+        }
     }
 
     h1 {
@@ -157,7 +168,10 @@ main
     padding: 40px;
     overflow: scroll;
     height: 100vh;
-
+    @media(max-width: 768px) {
+        flex: 0 0 100%;
+        height: auto;
+    }
     .about {
         button {
             @include btn();
@@ -175,6 +189,10 @@ main
             margin-top: 40px;
             .col {
                 flex: 0 0 48%;
+                @media(max-width: 768px) {
+                flex: 0 0 100%;
+                }
+
                 img {
                     width: 100%;
                     &:hover {
@@ -196,6 +214,59 @@ main
         }
         &::after {
             @include line();
+        }
+    }
+    footer {
+        padding-bottom: 40px;
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            form {
+                flex: 0 0 68%;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                @media(max-width: 768px) {
+                    flex: 0 0 100%;
+                }
+                input {
+                     flex: 0 0 48%;
+                     background: $lightGray;
+                     border: none;
+                } 
+                textarea {
+                    flex: 0 0 100%;
+                    margin-top: 10px;
+                    background: $lightGray;
+                    border: none;
+                }
+                button {
+                    @include btn();
+                    background: $pink;
+                    border: 2px solid $pink;
+                    color: #fff;
+                    &:hover {
+                        background: $green;
+                        border: 2px solid $green;
+                        color: #fff;
+                    }
+                }
+            }
+            .contact {
+                flex: 0 0 28%;
+                @media(max-width: 768px) {
+                    flex: 0 0 100%;
+                    margin-top: 50px;
+                }
+                li {
+                    line-height: 2.5;
+                }
+                i {
+                    color: $pink;
+                }
+            }
         }
     }
 }
